@@ -31,6 +31,12 @@ def loadData(filename, startLine, endLine):
             i += 1
     return data, labels
 
+class Metric1:
+    def __init__(self, metadata_p = 0):
+        self.metadata = metadata_p
+    def calc(self, original_label, predicted_label_proba):
+        return predicted_label_proba[original_label]
+
 class Metric2:
     def __init__(self, metadata_p = 1):
         self.metadata = metadata_p
@@ -72,8 +78,10 @@ def test(data_file_name, model_file_name, max_changed_amount = 10000):
     print("the number of manually changed reviews:", changed_amount)
     with open(model_file_name, "rb") as f:
         text_clf = pickle.load(f)
+    print("only probability", end = ':')
     predicted_label_probas = text_clf.predict_proba(test_data)
-    values = [i / 1000.0 for i in range(1, 11)]
+    test_metric(Metric1(), test_labels, predicted_label_probas, changed_amount, real_or_not)
+    values = [i / 10.0 for i in range(1, 21)]
     for i in values:
         print(i, end = ':')
         test_metric(Metric2(i), test_labels, predicted_label_probas, changed_amount, real_or_not)

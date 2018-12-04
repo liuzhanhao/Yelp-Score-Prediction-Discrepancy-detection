@@ -136,7 +136,7 @@ def second_measure(data_file_name):
     print_average(X, y, get_unique_word_percentage, "average unique word percentage")
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Usage: python3 feature_analysis.py <hand_written_data_file> <machine_generated_data_file>")
     else:
         first_measure(sys.argv[1])
