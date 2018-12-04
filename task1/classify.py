@@ -9,8 +9,8 @@ from yelp_utils import numLines, loadData
 import sys
 import time
 
-def classify(technique, posneg, percentData):
-    filename = 'yelp_academic_dataset_review.json'
+def classify(technique, posneg, percentData, filename):
+    # filename = 'yelp_academic_dataset_review.json'
     num_lines = numLines(filename)
     linesToRead = int(num_lines * (float(percentData)/100.0))
     print("linesToRead:", linesToRead)
@@ -40,8 +40,8 @@ def classify(technique, posneg, percentData):
     print("accuracy:", mean(predicted == test_labels))
 
 def print_usage():
-    print("Usage: classify.py <nb/svm/lr> <True/False> <number in [0, 100]>")
-    print("e.g., classify.py nb True 85")
+    print("Usage: classify.py <nb/svm/lr> <True/False> <number in [0, 100]> filename")
+    print("e.g., classify.py nb True 85 yelp_academic_dataset_review.json")
 
 def valid_args(avail_techniques, technique, posneg, percentData):
     return technique in avail_techniques and\
@@ -55,6 +55,7 @@ if __name__ == '__main__':
         technique = sys.argv[1].lower() # nb or svm or lr
         posneg = sys.argv[2] # True or False
         percentData = sys.argv[3] # [0, 100]
+        filename = sys.argv[4]
     except IndexError:
         print_usage()
         sys.exit(1)
@@ -72,4 +73,4 @@ if __name__ == '__main__':
     else:
         print("5-star classification")
     print("% of data used:", percentData)
-    classify(technique, posneg, percentData)
+    classify(technique, posneg, percentData, filename)
