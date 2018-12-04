@@ -5,24 +5,25 @@
 ------
 
 ### File Structure
-	|README.md: The readme file
+	|README.md: 	The readme file
 	|
-	|.gitignore: The git ignore file
+	|.gitignore: 	The git ignore file
 	|
-	|/task1: The folder for the 1st task: Sentiment Analysis & Rate Prediction
+	|/task1: 	The folder for the 1st task: Sentiment Analysis & Rate Prediction
 	|-----
 	|	|--classify.py:		Code for the rate prediction & sentiment analysis		
 	|	|--yelp_utils.py:	Helper code for the classify.py
 	|
-	|/task2: The folder for the 2nd task: Automatic Discrepancy Detector [1]
+	|/task2: 	The folder for the 2nd task: Automatic Discrepancy Detector [1]
 	|-----
-	|	|--test_metric.py:  Code for testing metrics for Automatic Discrepancy Detector
+	|	|--test_metric.py:  	Code for testing metrics for Automatic Discrepancy Detector
 	|
-	|/task3: The folder for the 3rd task: Machine-generated/Human-written Review Detector |-----
+	|/task3: 	The folder for the 3rd task: Machine-generated/Human-written Review Detector
+	|-----
 	|	|/yelp_review_generator:	The folder for the yelp review machine generator
-	|	|--feature_analysis.py:     Code for feature exploration
-	|	|--task3.py:		   Code for the machine-generated/human-written review detector
-	|	|--hotel_data.csv:			The Deceptive Opinion Spam Corpus for hotel reviews [2]
+	|	|--feature_analysis.py:     	Code for feature exploration
+	|	|--task3.py:		   	Code for the machine-generated/human-written review detector
+	|	|--hotel_data.csv:		The Deceptive Opinion Spam Corpus for hotel reviews [2]
 	|
 
 
