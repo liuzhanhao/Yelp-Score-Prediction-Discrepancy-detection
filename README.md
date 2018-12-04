@@ -49,6 +49,7 @@ Github repo: https://github.com/liuzhanhao/CS-6220/
 - Human-written Review Detector: Train a new classification model to tell if a review is truthful or written by people deliberately
 - Run:
 `python classify.py <nb/svm/lr>`
+
 `python3 feature_analysis.py <hand_written_data_file> <machine_generated_data_file>`
 
 
