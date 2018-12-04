@@ -31,12 +31,6 @@ def loadData(filename, startLine, endLine):
             i += 1
     return data, labels
 
-class Metric1:
-    def __init__(self, metadata_p = 0):
-        self.metadata = metadata_p
-    def calc(self, original_label, predicted_label_proba):
-        return predicted_label_proba[original_label]
-
 class Metric2:
     def __init__(self, metadata_p = 1):
         self.metadata = metadata_p
@@ -55,24 +49,14 @@ def test_metric(metric, original_labels, predicted_label_probas, changed_amount,
             hit += 1
     print("the number of detected wrong reviews in the first", changed_amount, "lowest confidence reviews: ", hit)
 
-def test():
-    #posneg = False
-    #percentData = 100
-    data_file_name = 'yelp_academic_dataset_review.json'
-    model_file_name = 'lr_False_100_clf.pickle'
+def test(data_file_name, model_file_name, max_changed_amount = 10000):
     num_lines = numLines(data_file_name)
     linesToRead = int(num_lines * (float(100) / 100.0))
     train_end = linesToRead * 0.8
-
-    #train_data, train_labels = loadData(filename, 0, train_end, posneg)
     test_data, test_labels = loadData(data_file_name, train_end + 1, linesToRead)
-
     length = len(test_labels)
     print("the number of test reviews:", length)
-
     real_or_not = [True for i in range(length)]
-
-    max_changed_amount = 10000
     changed_amount = 0
     for i in range(length):
         if changed_amount >= max_changed_amount:
@@ -86,16 +70,16 @@ def test():
             real_or_not[i] = False
             changed_amount += 1
     print("the number of manually changed reviews:", changed_amount)
-
     with open(model_file_name, "rb") as f:
         text_clf = pickle.load(f)
-
     predicted_label_probas = text_clf.predict_proba(test_data)
-
     values = [i / 1000.0 for i in range(1, 11)]
     for i in values:
         print(i, end = ':')
         test_metric(Metric2(i), test_labels, predicted_label_probas, changed_amount, real_or_not)
 
 if __name__ == '__main__':
-    test()
+    if len(sys.argv) != 3:
+        print("Usage: python3 test_metric.py <data_file_name> <model_file_name>")
+    else:
+        test(sys.argv[1], sys.argv[2])

@@ -1,9 +1,9 @@
 import csv
 import matplotlib.pyplot as plt
 
-def load_data_0():
+def load_data_0(data_file_name):
     data, labels = [], []
-    with open('deceptive-opinion-2.csv', newline = '') as fp:
+    with open(data_file_name, newline = '') as fp:
         reader = csv.reader(fp, delimiter = ',')
         for line in reader:
             validity = line[0]
@@ -12,9 +12,9 @@ def load_data_0():
             labels.append(validity)
     return data[1:], labels[1:]
 
-def load_data():
+def load_data(data_file_name):
     data, labels = [], []
-    with open('machine_data-3.csv', newline = '') as fp:
+    with open(data_file_name, newline = '') as fp:
         reader = csv.reader(fp, delimiter = ',')
         for line in reader:
             validity = line[0]
@@ -105,9 +105,9 @@ def print_average(X, y, callback, description):
     plt.bar(range(2), [feature_sum_of_t / count_of_t, feature_sum_of_f / count_of_f], tick_label = ["truthful", "deceptive"])
     plt.savefig(description)
 
-def first_measure():
+def first_measure(data_file_name):
     print("HAND WRITTEN vs REAL:")
-    X0, y0 = load_data_0()
+    X0, y0 = load_data_0(data_file_name)
     print_average(X0, y0, get_sentence_count, "Average Sentence Count")
     print_average(X0, y0, get_word_count, "Average Word Count")
     print_average(X0, y0, get_number_count, "Average Number Count")
@@ -116,9 +116,9 @@ def first_measure():
     #print_average(X0, y0, get_average_word_length, "average average word length")
     print_average(X0, y0, get_unique_word_percentage, "Average Unique Word Percentage")
 
-def second_measure():
+def second_measure(data_file_name):
     print("MACHINE GENERATED vs REAL:")
-    X, y = load_data()
+    X, y = load_data(data_file_name)
     indices = []
     for i in range(len(X)):
         if len(get_words_from_review(X[i])) == 0 or len(get_sentences_without_markers_from_review(X[i])) == 0:
@@ -135,5 +135,8 @@ def second_measure():
     print_average(X, y, get_unique_word_percentage, "average unique word percentage")
 
 if __name__ == '__main__':
-    first_measure()
-    second_measure()
+    if len(sys.argv) != 2:
+        print("Usage: python3 feature_analysis.py <hand_written_data_file> <machine_generated_data_file>")
+    else:
+        first_measure(sys.argv[1])
+        second_measure(sys.argv[2])
