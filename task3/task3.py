@@ -22,7 +22,7 @@ def loadData():
     data, labels = [], []
     i = 0
 
-    with open('data_2.csv', 'r') as fp:
+    with open('hotel_data.csv', 'r') as fp:
         reader = csv.reader(fp, delimiter=',')
         for line in reader:
             review = line[1].strip()
