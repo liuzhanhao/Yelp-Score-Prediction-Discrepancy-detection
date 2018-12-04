@@ -1,4 +1,4 @@
-# CS-6220: Yelp Score Prediction & Discrepancy detection
+# Yelp Score Prediction & Discrepancy detection
 ###### tags: `Yelp` `Classification` `Text Analysis`
 ------
 
