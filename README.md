@@ -25,9 +25,9 @@ Github repo: https://github.com/liuzhanhao/CS-6220/
 	|	|--feature_analysis.py:     	Code for feature exploration
 	|	|--task3.py:		   	Code for the machine-generated/human-written review detector
 	|	|--hotel_data.csv:		The Deceptive Opinion Spam Corpus for hotel reviews [2]
-	|	|--machine_data.csv: 	The machine generated reviews
-	|	|--deceptive-opinion-2.csv: x
-	|	|--machine_data-3.csv: 	x
+	|	|--machine_data.csv: 		The machine generated reviews
+	|	|--deceptive-opinion-2.csv: 	The mixture of human-written fake reviews and real reviews
+	|	|--machine_data-3.csv: 		The mixture of machine-generated reviews and real reviews
 
 
 
