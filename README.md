@@ -2,7 +2,7 @@
 ###### tags: `Yelp` `Classification` `Text Analysis`
 ------
 
-Github repo: https://github.com/liuzhanhao/CS-6220/
+Github repo: https://github.com/liuzhanhao/Yelp-Score-Prediction-Discrepancy-detection
 
 ### File Structure
 
